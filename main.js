@@ -2,43 +2,50 @@
 // ===== PRODUCT DATA =====
 const products = [
   // --- MEAT ---
-  { id: 1,  name: 'Cow Meat (Flesh Only)',       category: 'meat',     price: null,  tag: 'Cow',     img: 'cow meat flesh only.jpeg',     available: true },
-  { id: 2,  name: 'Cow Meat (Sharing)',           category: 'meat',     price: null,  tag: 'Cow',     img: 'cow meat sharing.jpeg',   available: true },
-  { id: 3,  name: 'Agemawo (Beef with Skin)',     category: 'meat',     price: 22000, tag: 'Cow',     img: 'agemawo.jpeg',   available: true },
-  { id: 4,  name: 'Goat Meat (Sharing)',          category: 'meat',     price: 27000, tag: 'Goat',    img: 'goat meat sharing.jpeg',       available: true },
-  { id: 5,  name: 'Goat Meat (Without Offal)',    category: 'meat',     price: 32000, tag: 'Goat',    img: 'goat meat without offal.jpeg',       available: true },
-  { id: 6,  name: 'Ram Meat (Sharing)',           category: 'meat',     price: 27000, tag: 'Ram',     img: 'ram meat sharing.jpg',     available: true },
-  { id: 7,  name: 'Ram Meat (Without Offal)',     category: 'meat',     price: 30500, tag: 'Ram',     img: 'ram meat without offal.jpg',     available: true },
-  { id: 8,  name: 'Ijase (Shin) – With Skin',    category: 'meat',     price: 23000, tag: 'Cow',     img: 'ijase with skin.jpeg',   available: true },
-  { id: 9,  name: 'Ijase (Shin) – Without Skin', category: 'meat',     price: 27000, tag: 'Cow',     img: 'ijase without skin.jpeg',   available: true },
-  { id: 10, name: 'Tozo (Hump) – With Skin',     category: 'meat',     price: 24500, tag: 'Cow',     img: 'tozo with skin.jpeg',     available: true },
-  { id: 11, name: 'Tozo (Hump) – Without Skin',  category: 'meat',     price: 27500, tag: 'Cow',     img: 'tozo without skin.jpeg',     available: true },
+   { id: 1, name: 'Full Cow (Various)',         category: 'meat',     price: '1,200,000 | 1,000,000 | 800,000', tag: 'Cow', img: 'cow.jpg', available: true },
+  { id: 2, name: 'Half Cow (Various)',         category: 'meat',     price: '600,000 | 500,000 | 400,000', tag: 'Cow', img: 'cow.jpg', available: true },
+  { id: 3, name: 'Quarter Cow (Various)',      category: 'meat',     price: '300,000 | 250,000 | 200,000', tag: 'Cow', img: 'cow.jpg', available: true },
+   { id: 4, name: 'Cow neck',              category: 'meat',     price: 60000, tag: 'Cow', img: 'cow neck.png', available: true },
+   { id: 4, name: 'Cow laps',              category: 'meat',     price: 250000, tag: 'Cow', img: 'cow laps.jpeg', available: true },
+  { id: 4, name: 'Beef (per kg)',              category: 'meat',     price: 8000, tag: 'Cow', img: 'cow meat flesh only.jpeg', available: true },
+
+  { id: 5, name: 'Full Ram (Various)',         category: 'meat',     price: '600,000 | 550,000 | 400,000', tag: 'Ram', img: 'ram.jpg', available: true },
+  { id: 6, name: 'Half Ram (Various)',         category: 'meat',     price: '300,000 | 250,000 | 200,000', tag: 'Ram', img: 'ram.jpg', available: true },
+  { id: 7, name: 'Quarter Ram (Various)',      category: 'meat',     price: '150,000 | 125,000 | 100,000', tag: 'Ram', img: 'ram.jpg', available: true },
+  { id: 8, name: 'Ram (per kg)',               category: 'meat',     price: 12000, tag: 'Ram', img: 'ram meat sharing.jpg', available: true },
+
+  { id: 9, name: 'Full Goat (Various)',        category: 'meat',     price: '300,000 | 250,000 | 200,000 | 150,000', tag: 'Goat', img: 'goat.jpeg', available: true },
+  { id: 10, name: 'Half Goat (Various)',        category: 'meat',     price: '150,000 | 125,000 | 100,000 | 75,000', tag: 'Goat', img: 'goat.jpeg', available: true },
+  { id: 11, name: 'Quarter Goat (Various)',     category: 'meat',     price: '75,000 | 62,500 | 50,000 | 37,500', tag: 'Goat', img: 'goat.jpeg', available: true },
+  { id: 12, name: 'Goat (per kg)',              category: 'meat',     price: 10000, tag: 'Goat', img: 'goat meat sharing.jpeg', available: true },
+  { id: 13,  name: 'Agemawo (Beef with Skin)',     category: 'meat',     price: 8000, tag: 'Cow',     img: 'agemawo.jpeg',   available: true },
+  { id: 18,  name: 'Ijase (Shin) – With Skin',    category: 'meat',     price: 8000, tag: 'Cow',     img: 'ijase with skin.jpeg',   available: true },
+  { id: 19,  name: 'Ijase (Shin) – Without Skin', category: 'meat',     price: 8000, tag: 'Cow',     img: 'ijase without skin.jpeg',   available: true },
+  { id: 20, name: 'Tozo (Hump) – With Skin',     category: 'meat',     price: 8500, tag: 'Cow',     img: 'tozo with skin.jpeg',     available: true },
   
   // --- ASSORTED ---
-  { id: 14, name: 'Cow Head',                    category: 'assorted', price: 21500, tag: 'Cow',     img: 'cow head.jpg',   available: true },
-  { id: 15, name: 'Cow Assorted (Offal)',         category: 'assorted', price: 21500, tag: 'Cow',     img: 'cow assorted.jpg',   available: true },
-  { id: 16, name: 'Ram Assorted',                category: 'assorted', price: 21000, tag: 'Ram',     img: 'ram assorted.jpg',     available: true },
-  { id: 17, name: 'Goat Assorted',               category: 'assorted', price: 20000, tag: 'Goat',    img: 'goat assorted.jpg',       available: true },
-  { id: 18, name: 'Shaki',                       category: 'assorted', price: 27000, tag: 'Cow',     img: 'shaki.jpg',   available: true },
-  { id: 19, name: 'Abodi (Beef Reed)',            category: 'assorted', price: 12000, tag: 'Cow',     img: 'abodi.jpeg',   available: true },
-  { id: 20, name: 'Roundabout (Intestine)',       category: 'assorted', price: 20000, tag: 'Cow',     img: 'roundabout.jpg',     available: true },
-  { id: 21, name: 'Liver',                        category: 'assorted', price: 21000, tag: 'Cow',     img: 'liver.jpg',   available: true },
-  { id: 22, name: 'Cow Tail',                     category: 'assorted', price: 30000, tag: 'Cow',     img: 'cow tail.jpeg',   available: true },
-  { id: 23, name: 'Cow Kidney',                   category: 'assorted', price: 8500,  tag: 'Cow',     img: 'cow kidney.jpg',     available: true },
-  { id: 24, name: 'Cow Heart',                    category: 'assorted', price: 14500, tag: 'Cow',     img: 'cow heart.jpg',     available: true },
-  { id: 25, name: 'Cow Tongue',                   category: 'assorted', price: 17000, tag: 'Cow',     img: 'cow tongue.webp',   available: true },
-  { id: 26, name: 'Cow Leg',                      category: 'assorted', price: 13000, tag: 'Cow',     img: 'cow legs.jpg',   available: true },
+  { id: 14, name: 'Cow Head',                    category: 'assorted', price: 55000, tag: 'Cow',     img: 'cow head.jpg',   available: true },
+  { id: 15, name: 'Cow Assorted (Offal)',         category: 'assorted', price: '8,000 per kg', tag: 'Cow',     img: 'cow assorted.jpg',   available: true },
+  { id: 16, name: 'Ram Assorted',                category: 'assorted', price: '12,000 per kg', tag: 'Ram',     img: 'ram assorted.jpg',     available: true },
+  { id: 17, name: 'Goat Assorted',               category: 'assorted', price: '10,000 per kg', tag: 'Goat',    img: 'goat assorted.jpg',       available: true },
+  { id: 22, name: 'Cow Tail',                     category: 'assorted', price: 25000, tag: 'Cow',     img: 'cow tail.jpeg',   available: true },
+  { id: 23, name: 'Cow Kidney',                   category: 'assorted', price: 4000,  tag: 'Cow',     img: 'cow kidney.jpg',     available: true },
+  { id: 24, name: 'Cow Heart',                    category: 'assorted', price: 8000, tag: 'Cow',     img: 'cow heart.jpg',     available: true },
+  { id: 25, name: 'Cow Tongue',                   category: 'assorted', price: 12000, tag: 'Cow',     img: 'cow tongue.webp',   available: true },
+  { id: 26, name: 'Cow Leg',                      category: 'assorted', price: 8000, tag: 'Cow',     img: 'cow legs.jpg',   available: true },
  
   // --- STEAKS & RIBS ---
   
-  { id: 32, name: 'Beef Ribs (Deboned)',          category: 'steaks',   price: 24000, tag: 'Ribs',    img: 'boneless beef ribs.jpg',   available: true },
-  { id: 33, name: 'Beef Ribs',                   category: 'steaks',   price: 22000, tag: 'Ribs',    img: 'beef ribs.avif',   available: true },
+  { id: 32, name: 'Beef Ribs (Deboned)',          category: 'steaks',  tag: 'Ribs',    img: 'boneless beef ribs.jpg',   available: true },
+  { id: 33, name: 'Beef Ribs',                   category: 'steaks', tag: 'Ribs',    img: 'beef ribs.avif',   available: true },
   
   // --- BONES & FAT ---
-  { id: 35, name: 'Bone Marrow',                 category: 'bones',    price: 10000, tag: 'Bones',   img: 'bone marrow.webp',   available: true },
-  {id: 36 , name: 'Suet (Hard Fat)',                 category: 'fat',      price: 9000,  tag: 'Fat',     img: 'suet.jpeg',   available: true },
-  { id: 37, name: 'Brisket Bone',                category: 'bones',    price: 16000, tag: 'Bones',   img: 'brisket bone.jpeg',   available: true },
-    { id: 38, name: 'Cow Fat',                     category: 'fat',      price: 8000,  tag: 'Fat',     img: 'cow fat.webp',   available: true },
+  { id: 35, name: 'Bone Marrow',                 category: 'bones',    tag: 'Bones',   img: 'bone marrow.webp',   available: true },
+  {id: 36 , name: 'Suet (Hard Fat)',                 category: 'fat',        tag: 'Fat',     img: 'suet.jpeg',   available: true },
+  { id: 37, name: 'Brisket Bone',                category: 'bones',    price: '6,500 per kg', tag: 'Bones',   img: 'brisket bone.jpeg',   available: true },
+    { id: 38, name: 'Cow Fat',                     category: 'fat', tag: 'Fat',     img: 'cow fat.webp',   available: true },
+  
+  
 ];
 
 const tagColors = {
