@@ -187,9 +187,10 @@ function renderOrderFormProducts() {
           <div class="text-xs text-gray-500 dark:text-gray-400">${p.price ? formatPrice(p.price) : 'Call for price'}</div>
         </div>
         <div class="flex items-center gap-2">
-          <input name="qty-${p.id}" type="number" min="0" value="0" data-id="${p.id}" class="order-qty w-20 px-2 py-1 rounded border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 text-sm" />
+          <input type="hidden" name="items[${p.id}][name]" value="${p.name}" />
+          <input name="items[${p.id}][qty]" type="number" min="0" value="0" data-id="${p.id}" class="order-qty w-20 px-2 py-1 rounded border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 text-sm" />
           <div class="text-xs text-gray-400 dark:text-gray-300">or</div>
-          <input name="weight-${p.id}" type="number" min="0" step="0.1" placeholder="kg" data-id-weight="${p.id}" class="order-wt w-20 px-2 py-1 rounded border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 text-sm" />
+          <input name="items[${p.id}][weight]" type="number" min="0" step="0.1" placeholder="kg" data-id-weight="${p.id}" class="order-wt w-20 px-2 py-1 rounded border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 text-sm" />
         </div>
       </div>
     `).join('');
@@ -251,7 +252,7 @@ function restoreDraft() {
   if (d.items) {
     Object.keys(d.items).forEach(id => {
       const qty = document.querySelector(`[data-id="${id}"]`);
-      const wt = document.querySelector(`[name="weight-${id}"]`) || document.querySelector(`[data-id-weight="${id}"]`);
+      const wt = document.querySelector(`[name="items[${id}][weight]"]`) || document.querySelector(`[name="weight-${id}"]`) || document.querySelector(`[data-id-weight="${id}"]`);
       if (qty && d.items[id].qty != null) qty.value = d.items[id].qty;
       if (wt && d.items[id].wt != null) wt.value = d.items[id].wt;
     });
