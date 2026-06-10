@@ -135,8 +135,7 @@ if (searchInput) {
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
+    
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const phone = document.getElementById('phone').value;
@@ -144,9 +143,7 @@ if (contactForm) {
     const submitBtn = document.getElementById('submitBtn');
     const formMessage = document.getElementById('formMessage');
 
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
-
+    
     try {
       const { error } = await supabase.from('contact_messages').insert([
         { name, email, phone, message }
@@ -329,19 +326,20 @@ if (orderForm) {
   const clearBtn = document.getElementById('clearRecentBtn');
   if (clearBtn) clearBtn.addEventListener('click', (e) => { e.preventDefault(); clearRecentOrders(); });
   orderForm.addEventListener('submit', (e) => {
-    e.preventDefault();
     const name = document.getElementById('orderName').value.trim();
     const email = document.getElementById('orderEmail').value.trim();
     const orderDate = document.getElementById('orderDate') ? document.getElementById('orderDate').value : '';
     const messageEl = document.getElementById('orderMessage');
 
     if (!name || name.length < 2) {
+      e.preventDefault();
       messageEl.textContent = 'Please enter your name.';
       messageEl.className = 'bg-red-100 text-red-700 dark:bg-red-900/30 rounded-lg p-3';
       messageEl.classList.remove('hidden');
       return;
     }
     if (!validateEmail(email)) {
+      e.preventDefault();
       messageEl.textContent = 'Please enter a valid email address.';
       messageEl.className = 'bg-red-100 text-red-700 dark:bg-red-900/30 rounded-lg p-3';
       messageEl.classList.remove('hidden');
@@ -349,6 +347,7 @@ if (orderForm) {
     }
 
     if (!orderDate) {
+      e.preventDefault();
       messageEl.textContent = 'Please pick a preferred collection date.';
       messageEl.className = 'bg-red-100 text-red-700 dark:bg-red-900/30 rounded-lg p-3';
       messageEl.classList.remove('hidden');
@@ -371,46 +370,14 @@ if (orderForm) {
     });
 
     if (ordered.length === 0) {
+      e.preventDefault();
       messageEl.textContent = 'Please select at least one product (quantity or weight).';
       messageEl.className = 'bg-red-100 text-red-700 dark:bg-red-900/30 rounded-lg p-3';
       messageEl.classList.remove('hidden');
       return;
     }
 
-    // show confirmation summary
-    const summary = ordered.map(it => {
-      const qtyText = it.qty ? `${it.qty} pcs` : `${it.weight} kg`;
-      return `<li class="py-1">${it.name} — <span class="font-semibold">${qtyText}</span></li>`;
-    }).join('');
-
-    messageEl.innerHTML = `
-      <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded">
-        <p class="font-semibold text-green-800 dark:text-green-300">Thank you, ${name} — your weekly order was received.</p>
-        <p class="text-sm text-gray-700 dark:text-gray-300 mt-2">We will contact you at <span class="font-medium">${email}</span> to confirm pickup details.</p>
-        <p class="text-sm text-gray-700 dark:text-gray-300 mt-1">Preferred collection date: <span class="font-medium">${orderDate}</span></p>
-        <ul class="mt-3 text-sm text-gray-800 dark:text-gray-200">${summary}</ul>
-        <p class="mt-3 text-xs text-gray-600 dark:text-gray-400">Please arrive on your chosen date to collect your order.</p>
-      </div>
-    `;
-    messageEl.className = '';
-    messageEl.classList.remove('hidden');
-
-    // reset form inputs
-    orderForm.reset();
-    // re-render to reset quantities (keeps UI consistent)
-    renderOrderFormProducts();
-    // save to recent orders and clear draft
-    const orderRecord = {
-      id: Date.now(),
-      createdAt: new Date().toISOString(),
-      name,
-      email,
-      date: orderDate,
-      items: ordered
-    };
-    saveRecentOrder(orderRecord);
-    clearDraft();
-    renderRecentOrders();
+    // At this point all validations passed — do not call e.preventDefault() so browser will POST the form to Formspree.
   });
 }
 
